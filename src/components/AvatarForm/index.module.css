@@ -1,0 +1,73 @@
+:root {
+  --form-color: #333333;
+}
+
+.formContainer {
+  position: relative;
+  transition: all ease-out .2s;
+}
+
+.formContainer.collapsed  {
+  transform: translateX(100%);
+  margin-left: -400px;
+}
+
+.avatarForm {
+  overflow-y: scroll;
+  width: 400px;
+  height: 100%;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+  background-color: var(--form-color);
+}
+
+.avatarForm::-webkit-scrollbar {
+  display: none;
+}
+
+/* 折叠按钮 */
+.collapsedBtn {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 20px;
+  height: 70px;
+  background-color: var(--form-color);
+  border: none;
+  border-radius: 4px 0 0 4px;
+  cursor: pointer;
+  overflow: hidden;
+  
+  transform-origin: right;
+  transform: translate(-100%, -50%);
+  transition: transform .1s linear;
+}
+
+.collapsedBtn:hover {
+  transform-origin: right;
+  transform: translate(-100%, -50%) scaleX(1.2);
+  transition: transform .1s linear;
+  opacity: 0.8;
+}
+
+.collapsedBtn:focus {
+  outline: none;
+}
+
+/* 按钮内部 箭头 */
+.collapsedBtn::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-top: 1px solid white;
+  border-right: 1px solid white;
+  transform: translate(-75%, -50%) rotate(45deg);
+  transition: transform .2s ease-in;
+}
+
+.collapsed > .collapsedBtn::after {
+  transform: translate(-25%, -50%) rotate(-135deg);
+}
